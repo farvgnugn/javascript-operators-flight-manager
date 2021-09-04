@@ -1,3 +1,5 @@
+"use strict"
+
 function Passengers() {
 
     function checkFlightCapacity(flightCapacity, passengers) {
@@ -13,10 +15,10 @@ function Passengers() {
     }
 
     function distributeAllSeatsToAllPassengers(vipCount, stdCount, flightCount, bizSeatCount, ecoSeatCount) {
-        let vipInBiz = 0,
-            vipInEco = 0,
-            regInBiz = 0,
-            regInEco = 0,
+        let vipInBiz,
+            vipInEco,
+            regInBiz,
+            regInEco,
             totalBizSeats = bizSeatCount * flightCount,
             totalEcoSeats = ecoSeatCount * flightCount;
 
@@ -25,13 +27,11 @@ function Passengers() {
         totalBizSeats -= vipInBiz;
 
         regInBiz = Math.min(totalBizSeats, stdCount);
-        totalBizSeats -= regInBiz;
 
         vipInEco = Math.min(totalEcoSeats, vipCount - vipInBiz);
         totalEcoSeats -= vipInEco;
 
         regInEco = Math.min(totalEcoSeats, stdCount - regInBiz);
-        totalEcoSeats -= regInEco;
 
         return {
             vipPassengersWithBusinessSeats: vipInBiz,
